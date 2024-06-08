@@ -72,8 +72,8 @@ export default function SearchInput({ setQuery }) {
             onSubmit={(e) => {
               e.preventDefault();
               if (searchQuery !== "") setQuery({ q: searchQuery });
+              setSearchQuery("");
             }}
-setSearchQuery("");
           >
             <Search>
               <SearchIconWrapper>
