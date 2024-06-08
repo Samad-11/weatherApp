@@ -1,35 +1,53 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Skeleton } from "@mui/material";
 import SearchInput from "./components/SearchInput";
 import Time from "./components/Time";
 import CityMainInfo from "./components/CityMainInfo";
 import getFormattedWeatherData from "./services/weatherService";
 import { useEffect, useState } from "react";
+import { getWeatherStyles } from "./services/getWeatherStyles";
+import { getUserCity } from "./services/getUserCity";
+import LoadingSkeleton from "./components/LoadingSkeleton";
 
 const App = () => {
-  const [query, setQuery] = useState({ q: "New Delhi" });
   const [weather, setWeather] = useState();
   const [units, setUnit] = useState("metric");
+  const [weatherStyle, setWeatherStyle] = useState({});
+
+  const [query, setQuery] = useState({ q: "New Delhi" });
 
   useEffect(() => {
     document.title = `${query.q.toUpperCase()} | Weather Today`;
-
     getFormattedWeatherData({ ...query, units }).then((data) => {
-      console.log("check\n", data);
       setWeather(data);
+      const style = getWeatherStyles(data.id);
+      setWeatherStyle(style);
     });
-  }, [query]);
+  }, [query, units]);
+
+  useEffect(() => {
+    const fetchCity = async () => {
+      try {
+        const userCity = await getUserCity();
+        setQuery({ q: userCity });
+      } catch (err) {}
+    };
+
+    fetchCity();
+  }, []);
 
   useEffect(() => {}, [weather]);
 
   return (
     <Container>
-      <Box sx={{ bgcolor: "darkorange", color: "white" }}>
+      <Box sx={weatherStyle}>
         <SearchInput setQuery={setQuery} />
-        {weather && (
+        {weather ? (
           <Box sx={{ p: "2rem" }}>
             <Time weather={weather} />
             <CityMainInfo weather={weather} />
           </Box>
+        ) : (
+          <LoadingSkeleton />
         )}
       </Box>
     </Container>

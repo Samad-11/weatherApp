@@ -4,3 +4,76 @@
 html {
     font-family: "Poppins", sans-serif;
 }
+
+
+/* WeatherStyles.css */
+
+/* Thunderstorm */
+.thunderstorm {
+    background-color: #2F4F4F;
+    /* Dark Slate Gray */
+    color: #FFFFFF;
+}
+
+/* Drizzle */
+.drizzle {
+    background-color: #AFEEEE;
+    /* Pale Turquoise */
+    color: #000000;
+}
+
+/* Rain */
+.rain {
+    background-color: #4682B4;
+    /* Steel Blue */
+    color: #FFFFFF;
+}
+
+/* Snow */
+.snow {
+    background-color: #F0F8FF;
+    /* Alice Blue */
+    color: #000000;
+}
+
+/* Atmosphere (Mist, Smoke, Haze, Dust, Fog, Sand, Ash, Squall, Tornado) */
+.atmosphere {
+    background-color: #D3D3D3;
+    /* Light Gray */
+    color: #000000;
+}
+
+/* Clear */
+.clear {
+    background-color: #87CEEB;
+    /* Sky Blue */
+    color: #000000;
+}
+
+/* Few Clouds */
+.few-clouds {
+    background-color: #B0E0E6;
+    /* Powder Blue */
+    color: #000000;
+}
+
+/* Scattered Clouds */
+.scattered-clouds {
+    background-color: #B0C4DE;
+    /* Light Steel Blue */
+    color: #000000;
+}
+
+/* Broken Clouds */
+.broken-clouds {
+    background-color: #A9A9A9;
+    /* Dark Gray */
+    color: #FFFFFF;
+}
+
+/* Overcast Clouds */
+.overcast-clouds {
+    background-color: #696969;
+    /* Dim Gray */
+    color: #FFFFFF;
+}

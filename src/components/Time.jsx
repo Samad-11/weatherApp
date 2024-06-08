@@ -2,9 +2,6 @@ import { Typography } from "@mui/material";
 import React from "react";
 
 const Time = ({ weather }) => {
-  console.log("==========hehe==========================");
-  console.log(weather);
-  console.log("====================================");
   return (
     <Typography
       sx={{

@@ -1,7 +1,9 @@
 import { DateTime } from "luxon";
 
-const API_KEY = "ccdb698573cd5a344408fd2caa00716b";
-const BASE_URL = "https://api.openweathermap.org/data/2.5/";
+const API_KEY = process.env.REACT_APP_API_KEY;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+// const API_KEY = "ccdb698573cd5a344408fd2caa00716b";
+// const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
 const getWeatherData = (infoType, searchParams) => {
   const url = new URL(BASE_URL + infoType);
@@ -18,7 +20,7 @@ export const FahToCel = (inputFah) => {
 const formatToLocalTime = (
   secs,
   offset,
-  format = "cccc, dd LLL yyyy' | Local time: 'hh:mm:a"
+  format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a"
 ) => {
   return DateTime.fromSeconds(secs + offset, { zone: "utc" }).toFormat(format);
 };
@@ -39,18 +41,19 @@ const formatCurrent = (data) => {
     name,
   } = data;
 
-  const { main, description, icon } = weather[0];
+  const { id, main, description, icon } = weather[0];
   const formattedLocalTime = formatToLocalTime(dt, timezone);
 
   return {
+    id,
     temp,
     feels_like,
     temp_min,
     temp_max,
     humidity,
     country,
-    sunrise: formatToLocalTime(sunrise, timezone, "hh:mm:a"),
-    sunset: formatToLocalTime(sunset, timezone, "hh:mm:a"),
+    sunrise: formatToLocalTime(sunrise, timezone, "hh:mm a"),
+    sunset: formatToLocalTime(sunset, timezone, "hh:mm a"),
     speed,
     main,
     description,

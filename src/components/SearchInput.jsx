@@ -55,7 +55,7 @@ export default function SearchInput({ setQuery }) {
   const [searchQuery, setSearchQuery] = useState("");
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: "inherit" }}>
+      <AppBar position="static" sx={{ bgcolor: "inherit", color: "inherit" }}>
         <Toolbar>
           <Typography
             variant="h6"

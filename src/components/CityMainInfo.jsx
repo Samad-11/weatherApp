@@ -9,7 +9,7 @@ const CityMainInfo = ({ weather }) => {
     {
       icon: <FaThermometerEmpty />,
       name: "Real Feels",
-      value: `${weather.feels_like}°`,
+      value: `${weather.feels_like}°C`,
     },
     {
       icon: <MdWaterDrop />,
@@ -47,7 +47,7 @@ const CityMainInfo = ({ weather }) => {
         }}
       >
         <img src={weather.iconUrl} alt="weather-icon" />
-        <Typography variant="h4">{weather.temp.toFixed()}°</Typography>
+        <Typography variant="h4">{weather.temp.toFixed()}°C</Typography>
         <Box
           sx={{
             display: "flex",
@@ -116,7 +116,7 @@ const CityMainInfo = ({ weather }) => {
           }}
         >
           <FiArrowUp />
-          Hign: {weather.temp_max}°
+          Hign: {weather.temp_max}°C
         </Box>
         <Box
           sx={{
@@ -128,7 +128,7 @@ const CityMainInfo = ({ weather }) => {
           }}
         >
           <FiArrowDown />
-          Low: {weather.temp_min}°
+          Low: {weather.temp_min}°C
         </Box>
       </Box>
     </Box>
