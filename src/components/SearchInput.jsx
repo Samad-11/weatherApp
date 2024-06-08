@@ -73,13 +73,14 @@ export default function SearchInput({ setQuery }) {
               e.preventDefault();
               if (searchQuery !== "") setQuery({ q: searchQuery });
             }}
+setSearchQuery("");
           >
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search…"
+                placeholder="Enter city Name…"
                 inputProps={{ "aria-label": "search" }}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
