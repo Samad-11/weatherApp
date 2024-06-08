@@ -11,6 +11,8 @@ const App = () => {
   const [units, setUnit] = useState("metric");
 
   useEffect(() => {
+    document.title = `${query.q.toUpperCase()} | Weather Today`;
+
     getFormattedWeatherData({ ...query, units }).then((data) => {
       console.log("check\n", data);
       setWeather(data);
