@@ -24,10 +24,16 @@ const CityMainInfo = ({ weather }) => {
   ];
   return (
     <Box>
-      <Typography variant="h5" sx={{ textAlign: "center", fontWeight: "700" }}>
+      <Typography
+        variant="h5"
+        sx={{ textAlign: "center", fontWeight: "700", mt: "2rem" }}
+      >
         {weather.name}, {weather.country}
       </Typography>
-      <Typography variant="h6" sx={{ textAlign: "center", fontWeight: "500" }}>
+      <Typography
+        variant="h6"
+        sx={{ textAlign: "center", fontWeight: "500", my: "2rem" }}
+      >
         {weather.main}
       </Typography>
       <Box
@@ -73,6 +79,7 @@ const CityMainInfo = ({ weather }) => {
           alignItems: "center",
           gap: "2.3rem",
           flexWrap: "wrap",
+          my: "5rem",
         }}
       >
         <Box
