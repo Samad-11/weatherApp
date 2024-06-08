@@ -53,7 +53,9 @@ const App = () => {
           </Box>
         )}
         {!weather && (
-          <Typography>Get weather by city name or current location</Typography>
+          <Typography component={"div"} textAlign={"center"}>
+            Get weather by city name or current location{" "}
+          </Typography>
         )}
       </Box>
     </Container>
