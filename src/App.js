@@ -1,4 +1,4 @@
-import { Box, Container, Skeleton } from "@mui/material";
+import { Box, Container, Skeleton, Typography } from "@mui/material";
 import SearchInput from "./components/SearchInput";
 import Time from "./components/Time";
 import CityMainInfo from "./components/CityMainInfo";
@@ -46,13 +46,14 @@ const App = () => {
     <Container>
       <Box sx={weatherStyle}>
         <SearchInput setQuery={setQuery} />
-        {weather ? (
+        {weather && (
           <Box sx={{ p: "2rem" }}>
             <Time weather={weather} />
             <CityMainInfo weather={weather} />
           </Box>
-        ) : (
-          <LoadingSkeleton />
+        )}
+        {!weather && (
+          <Typography>Get weather by city name or current location</Typography>
         )}
       </Box>
     </Container>
