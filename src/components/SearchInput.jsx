@@ -73,6 +73,7 @@ export default function SearchInput({ setQuery }) {
               e.preventDefault();
               if (searchQuery !== "") setQuery({ q: searchQuery });
             }}
+setSearchQuery("");
           >
             <Search>
               <SearchIconWrapper>
