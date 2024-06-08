@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box, Container } from "@mui/material";
+import SearchInput from "./components/SearchInput";
+import Time from "./components/Time";
+import CityMainInfo from "./components/CityMainInfo";
+import getFormattedWeatherData from "./services/weatherService";
+import { useEffect, useState } from "react";
 
-function App() {
+const App = () => {
+  const [query, setQuery] = useState({ q: "New Delhi" });
+  const [weather, setWeather] = useState();
+  const [units, setUnit] = useState("metric");
+
+  useEffect(() => {
+    getFormattedWeatherData({ ...query, units }).then((data) => {
+      console.log("check\n", data);
+      setWeather(data);
+    });
+  }, [query]);
+
+  useEffect(() => {}, [weather]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Box sx={{ bgcolor: "darkorange", color: "white" }}>
+        <SearchInput setQuery={setQuery} />
+        {weather && (
+          <Box sx={{ p: "2rem" }}>
+            <Time weather={weather} />
+            <CityMainInfo weather={weather} />
+          </Box>
+        )}
+      </Box>
+    </Container>
   );
-}
+};
 
 export default App;
