@@ -13,27 +13,32 @@ const App = () => {
   const [units, setUnit] = useState("metric");
   const [weatherStyle, setWeatherStyle] = useState({});
 
-  const [query, setQuery] = useState({ q: "New Delhi" });
+  const [query, setQuery] = useState({});
 
   useEffect(() => {
-    document.title = `${query.q.toUpperCase()} | Weather Today`;
-    getFormattedWeatherData({ ...query, units }).then((data) => {
-      setWeather(data);
-      const style = getWeatherStyles(data.id);
-      setWeatherStyle(style);
-    });
+    document.title = query.q
+      ? `${query.q.toUpperCase()} | Weather Today`
+      : "Weather Today";
+
+    if (query.q) {
+      getFormattedWeatherData({ ...query, units }).then((data) => {
+        setWeather(data);
+        const style = getWeatherStyles(data.id);
+        setWeatherStyle(style);
+      });
+    }
   }, [query, units]);
 
-  useEffect(() => {
-    const fetchCity = async () => {
-      try {
-        const userCity = await getUserCity();
-        setQuery({ q: userCity });
-      } catch (err) {}
-    };
+  // useEffect(() => {
+  //   const fetchCity = async () => {
+  //     try {
+  //       const userCity = await getUserCity();
+  //       setQuery({ q: userCity });
+  //     } catch (err) {}
+  //   };
 
-    fetchCity();
-  }, []);
+  //   fetchCity();
+  // }, []);
 
   useEffect(() => {}, [weather]);
 

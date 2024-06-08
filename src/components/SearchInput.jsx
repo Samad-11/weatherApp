@@ -8,6 +8,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { FaLocationCrosshairs } from "react-icons/fa6";
+import { getUserCity } from "../services/getUserCity";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -53,6 +55,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchInput({ setQuery }) {
   const [searchQuery, setSearchQuery] = useState("");
+  function getCurrentCity() {
+    getUserCity().then((data) => setQuery({ q: data }));
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ bgcolor: "inherit", color: "inherit" }}>
@@ -87,6 +92,10 @@ export default function SearchInput({ setQuery }) {
               />
             </Search>
           </form>
+          <FaLocationCrosshairs
+            onClick={getCurrentCity}
+            style={{ marginLeft: "1rem", cursor: "pointer" }}
+          />
         </Toolbar>
       </AppBar>
     </Box>
